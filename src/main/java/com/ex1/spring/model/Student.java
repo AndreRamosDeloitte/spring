@@ -1,18 +1,16 @@
 package com.ex1.spring.model;
 
-import java.util.UUID;
-
-import org.hibernate.annotations.Generated;
-
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Student {
 
     @Id
-    @Generated
-    public UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long id;
 
     public String name;
 
@@ -21,16 +19,17 @@ public class Student {
     public Student() {
     }
 
-    public Student(String name, int testScore) {
+    public Student(Long id, String name, int testScore) {
+        this.id = id;
         this.name = name;
         this.testScore = testScore;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
